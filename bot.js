@@ -120,7 +120,9 @@ class MrNodeBot {
             /** Initialize Facebook Messenger */
             messenger(this);
         } catch (err) {
-            this._errorHandler('Something went wrong in the primary init function', err);
+            this._errorHandler('Something went wrong in the primary init function', err);            
+            logger.error(err);
+            logger.error(JSON.stringify(err));
         }
     }
 
@@ -339,12 +341,15 @@ class MrNodeBot {
     async _initDbSubSystem() {
         // We have a Database available
         if (this.Config.knex.enabled) {
+            //logger.info('knex engine: ' + this.Config.knex.engine);
+            //logger.info(JSON.stringify(this.Config.knex.mssql));
             logger.info(t('database.initializing'));
             return require('./database/client').then((db) => {
                 logger.info(t('database.initialized'));
                 return db;
-            }).catch(() => {
+            }).catch((e) => {
                 logger.error('Something went wrong connecting to the DB, disabling');
+                if (e != null && typeof (e) !== 'undefined') logger.error(e);
                 return false;
             });
         }

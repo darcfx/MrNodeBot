@@ -1,6 +1,6 @@
 exports.up = function (knex, Promise) {
     return knex.schema.table('upvotes', (table) => {
-        table.string('text').nullable().collate('utf8mb4_unicode_ci');
+        table.string('text').nullable();//.collate('utf8mb4_unicode_ci');
     });
 };
 

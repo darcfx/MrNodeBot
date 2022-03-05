@@ -7,14 +7,23 @@ const client = new Promise((res, rej) => {
     if (!config.knex.enabled) res(false);
 
     // Switch between engines
-    const knexConfig =
-    config.knex.engine === 'sqlite' ? config.knex.sqlite : config.knex.mysql;
+    const knexConfig =(
+        config.knex.engine === 'sqlite' 
+        ? config.knex.sqlite 
+        : (
+            config.knex.engine === 'mssql' 
+            ? config.knex.mssql 
+            : config.knex.mysql
+        )
+    );
+    //config.knex.engine === 'sqlite' ? config.knex.sqlite : config.knex.mysql;
 
     // Knex configuration object
     const knexBuilder = {
     // debug: true,
         client: knexConfig.client,
         connection: knexConfig.connection,
+        debug: true,
         supportBigNumbers: true,
         migrations: {
             directory: 'database/migrations',
@@ -24,7 +33,7 @@ const client = new Promise((res, rej) => {
         },
     };
 
-    if (config.knex.engine !== 'sqlite') {
+    if (config.knex.engine !== 'sqlite' && config.knex.engine !== 'mssql') {
         knexBuilder.pool = {
             min: 2,
             max: 10,

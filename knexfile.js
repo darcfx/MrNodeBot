@@ -1,7 +1,15 @@
 // This configuration file is used primary by the knex cli tool
 const config = require('./config');
 // Switch between engines
-const knexConfig = config.knex.engine === 'sqlite' ? config.knex.sqlite : config.knex.mysql;
+const knexConfig = (
+	config.knex.engine === 'sqlite' 
+	? config.knex.sqlite 
+	: (
+		config.knex.engine === 'mssql' 
+		? config.knex.mssql 
+		: config.knex.mysql
+	)
+);
 
 module.exports = {
     development: {
