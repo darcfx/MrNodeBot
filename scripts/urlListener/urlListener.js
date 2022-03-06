@@ -118,6 +118,7 @@ module.exports = (app) => {
      * @param is
      */
     const processUrl = (url, to, from, text, message, is) => {
+        //console.log(url);
         const chain = resultsCache.has(url) ? startCachedChain : startChain; // Load appropriate start method based on cache
 
         chain(url, to, from, text, message, is) // Begin Chain

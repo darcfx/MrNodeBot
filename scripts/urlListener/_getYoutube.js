@@ -4,6 +4,7 @@ const apiKey = require('../../config').apiKeys.google;
 const logger = require('../../lib/logger');
 
 const getYoutube = async (key, list, index, seekTime, results) => {
+    //logger.info('YouTube API Key: ' + apiKey);
     // No Key provided, return the results
     if (
         (!_.isString(key) || _.isEmpty(key)) &&

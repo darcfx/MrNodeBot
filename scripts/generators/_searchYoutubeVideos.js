@@ -3,6 +3,11 @@ const rp = require('request-promise-native');
 const logger = require('../../lib/logger');
 
 module.exports = async (apiKey, title) => {
+
+    // logger.log('YouTube apiKey: ' + apiKey);
+    // logger.log('YouTube title: ' + title);
+
+
     if (!apiKey || !title) {
         return {
             items: [],

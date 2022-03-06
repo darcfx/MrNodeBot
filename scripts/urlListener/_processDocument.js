@@ -155,6 +155,7 @@ const shouldCheck = (whiteListed, documentCheck, maxLength) => !whiteListed && (
  */
 const processDocument = async (results, userAgent, maxLength, whiteList = []) => {
     try {
+        //console.log(results);
         // Check to see if we have a white list
         const whiteListed = isWhiteListed(results.url, whiteList);
         const documentCheck = whiteListed ? await preformGetRequest(results.url, userAgent) : await performHEADRequest(results.url, userAgent);
@@ -174,8 +175,12 @@ const processDocument = async (results, userAgent, maxLength, whiteList = []) =>
                 realUrl: response.request.uri.href,
                 statusCode: (_.isUndefined(response) || _.isUndefined(response.statusCode)) ? 'No Status' : response.statusCode,
             });
-
-            return finalCheck(response, finalResults, documentCheck, results);
+            //console.log('processDocument');
+            //console.log(finalResults);
+            
+            const finalCheckResult = finalCheck(response, finalResults, documentCheck, results);
+            //console.log(finalCheckResult);
+            return finalCheckResult;
         } catch (err) {
             return errorHandler(err, results);
         }

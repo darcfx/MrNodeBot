@@ -17,6 +17,7 @@ const getTwitter = require('./_getTwitter'); // Get Twitter Data
  * @returns {Promise<*|{gitHub: {owner: *, forks: *, lastPush: *, name: *, watchers: *, fullName: *, language: *, stars: *, issues: *, isFork: *, desc: *}}|undefined|{bitBucket: {lastPush: *, ownerDisplayName: *, privateRepo: boolean, name: *, ownerUserName: *, fullName: *, language: *, hasIssues: *, desc: *}}|{bitBucket: {privateRepo: boolean}}>}
  */
 const linkMatcher = async (results, app) => {
+    //console.log(resutls);
     // Use the realUrl if available when doing matches
     // This allows shortened urls to still hit
     const current = results.realUrl ? results.realUrl : results.url;
@@ -41,6 +42,7 @@ const linkMatcher = async (results, app) => {
             break;
         case 'youtube.com': // Youtube
         case 'www.youtube.com':
+            //console.log("YOUTUBE: " + url.hostname);
             switch (results.uri.segmentCoded(0)) {
                 // Play list link
                 case 'playlist':
@@ -57,8 +59,10 @@ const linkMatcher = async (results, app) => {
                 case 'embed':
                 case 'watch':
                 default:
+                    //console.log("YOUTUBE WATCH");
                     // Playlist
                     if (_.isString(url.searchParams.get('list')) && _.isString(url.searchParams.get('v'))) {
+                        console.log("think it's a playlist ... :/");
                         return getYoutube(
                             url.searchParams.get('v'),
                             url.searchParams.get('list'),
@@ -69,6 +73,7 @@ const linkMatcher = async (results, app) => {
                     }
                     // Single Video
                     else if (_.isString(url.searchParams.get('v'))) {
+                        //console.log("YOUTUBE videoId: " + url.searchParams.get('v'));
                         return getYoutube(
                             url.searchParams.get('v'),
                             null,
@@ -77,6 +82,7 @@ const linkMatcher = async (results, app) => {
                             results,
                         );
                     }
+                    //console.log("missed.");
                     break;
             }
             break;

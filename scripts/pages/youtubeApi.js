@@ -5,10 +5,12 @@ const scriptInfo = {
 };
 const Models = require('funsociety-bookshelf-model-loader');
 const _ = require('lodash');
+//const logger = require('../../lib/logger');
 
 module.exports = app => {
     // Hold on to the Model
     const model = Models.YouTubeLink;
+    //logger.info("YouTubeApi Model Active: " + model)
     // No Model available, abort
     if (!model) return scriptInfo;
 

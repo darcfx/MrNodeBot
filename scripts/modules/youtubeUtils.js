@@ -12,6 +12,7 @@ const scheduler = require('../../lib/scheduler');
 
 // Display a list of images in the Web Front end
 module.exports = app => {
+    //logger.log('YouTube apiKey: ' + apiKey);
     // Bailout if we do not have database
     if (!Models.YouTubeLink || !apiKey) return scriptInfo;
 
