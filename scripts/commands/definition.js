@@ -52,6 +52,11 @@ module.exports = app => {
         access: app.Config.accessLevels.identified,
         call: getDefinition,
     });
+    app.Commands.set('define', {
+        desc: '[text] Exactly what it sounds like',
+        access: app.Config.accessLevels.identified,
+        call: getDefinition,
+    });
 
     // Return the script info
     return scriptInfo;
