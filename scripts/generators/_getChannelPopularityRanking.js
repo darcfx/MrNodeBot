@@ -23,7 +23,7 @@ const handler = async (channel) => {
             .where('channel', 'like', channel)
             .groupBy('candidate')
             .orderBy('score', 'desc')
-            .orderBy('result', 'desc'))
+            .orderBy('votes', 'desc'))
         .fetchAll();
 
     // No results, return empty object

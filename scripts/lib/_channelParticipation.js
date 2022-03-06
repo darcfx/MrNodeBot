@@ -62,7 +62,7 @@ const channelParticipation = async (channel, options) => {
                         _.each(options.nicks, nick => clause.orWhere('from', 'like', nick));
                     }
                 })
-                .groupBy('nick')
+                .groupBy('[from]')
                 .orderBy('total', 'desc');
 
             // Optional Limit
