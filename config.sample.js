@@ -141,6 +141,7 @@ module.exports = {
         nick: 'NickServ',
         host: '', // services.dal.net for Dalnet, empty for Freenode
         accCode: '3',
+        authType: 'acc', // either 'status' or 'acc', status for Freenode, acc for libera
     },
     // API Keys
     apiKeys: {

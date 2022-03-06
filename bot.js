@@ -266,7 +266,23 @@ class MrNodeBot {
                                     2 * 1000 * ++i,
                                 )
                             }
-                        } else ircWrappers.handleAuthenticatedCommands(nick, to, text, message);
+                        } else {
+                            switch (this.Config.nickserv.authType) {
+                                case 'status':
+                                    // TODO i don't think we can use NickServ for admin authentication anymore.
+                                    // on freenode, /msg NickServ status <nick> could tell you if someone was 
+                                    // authed to that nick.  
+                                    ircWrappers.handleAuthenticatedCommandsStatus(nick, to, text, message);
+                                break;
+                                case 'acc':
+                                    // Try /msg NickServ ACC <nick>
+                                    ircWrappers.handleAuthenticatedCommandsAcc(nick, to, text, message);
+                                break;
+                                default:
+                                    logger.error("INVALID CONFIG SETTING: config.nickserv.authType must be either 'status' or 'acc'");
+                                break;
+                            }
+                        }
                     } else {
                         logger.warn('An elevated command has been attempted but NickServ is not setup');
                     }
