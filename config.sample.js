@@ -251,7 +251,7 @@ module.exports = {
         },
         urls: {
             // Given User Agent
-            userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', // Updated 3/5/2022. This being stale can hurt YouTube resolution.
             // Maximum Content Length
             maxLength: 10485760,
             // IRC channels to ignore logging from
