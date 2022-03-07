@@ -108,7 +108,8 @@ formattingHelper = (results, app, options = {}) => {
         if (!_.isEmpty(results.youTube.video)) {
             const yr = results.youTube.video;
             if (!_.isEmpty(yr.channelTitle)) append(yr.channelTitle);
-            append(yr.videoTitle)(`${icons.views} ${c.teal(helpers.formatNumber(yr.viewCount))} ${icons.upArrow} ${c.green(helpers.formatNumber(yr.likeCount))} ${icons.downArrow} ${c.red(helpers.formatNumber(yr.dislikeCount))} ${icons.comments} ${c.blue(helpers.formatNumber(yr.commentCount))}`);
+            //append(yr.videoTitle)(`${icons.views} ${c.teal(helpers.formatNumber(yr.viewCount))} ${icons.upArrow} ${c.green(helpers.formatNumber(yr.likeCount))} ${icons.downArrow} ${c.red(helpers.formatNumber(yr.dislikeCount))} ${icons.comments} ${c.blue(helpers.formatNumber(yr.commentCount))}`);
+            append(yr.videoTitle)(`${icons.views} ${c.teal(helpers.formatNumber(yr.viewCount))} ${icons.upArrow} ${c.green(helpers.formatNumber(yr.likeCount))} ${icons.downArrow} ${c.blue(helpers.formatNumber(yr.commentCount))}`);
 
             // Append Published At Date
             if (yr.hasOwnProperty('publishedAt')) {
