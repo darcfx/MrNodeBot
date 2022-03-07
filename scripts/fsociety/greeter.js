@@ -85,7 +85,7 @@ module.exports = app => {
                 setTimeout(() => {
                     app.say(nick, `{${salutations}} ${nick}, {${appends}}. The time is now, ${app.Config.features.fsociety.mainChannel} needs your help. Joins us.`);
                     app._ircClient.send('invite', nick, app.Config.features.fsociety.mainChannel);
-                }, app.Config.features.fsociety.greeterDealy * 1000);
+                }, app.Config.features.fsociety.greeterDelay * 1000);
             });
         }
     };

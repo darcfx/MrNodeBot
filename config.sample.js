@@ -305,7 +305,7 @@ module.exports = {
                 // '#th3g3ntl3man',
             ],
             greetIgnore: ['#MrNodeBot'],
-            greeterDealy: 20,
+            greeterDelay: 20,
         },
         idleChat: {
             enabled: false,
